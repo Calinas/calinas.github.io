@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>Category: js | oneCoder</title>
+<title>Category: JS | oneCoder</title>
 
 
     <link rel="alternate" href="/atom.xml" title="oneCoder" type="application/atom+xml">
@@ -129,7 +129,7 @@
                 <main class="col-md-8 main-content ">
                     <h3> 
     
-        js 
+        JS 
     
 </h3>
 
@@ -138,23 +138,21 @@
         <div class="post-content">
             <div class="post-head home-post-head">
                 <h1 class="post-title"> 
-                    <a href="/git.html">git总结</a>
+                    <a href="/async-javascript.html">Async JS - Ajax,Callback,Promise,Async,Await的不同实现</a>
                 </h1>
                 <div class="post-meta">  &bull;
                     <time class="post-date" datetime="" title="">
-                        2018年09月30日
+                        2018年08月14日
                     </time>
                 </div>
             </div>
             <p class="brief">
                 
-                    
+                    整理一下异步js相关的知识。异步js的实现形式。
 
-git windows安装以及基础设置
+ajax
 
-
-windows上面直接去git官网下载安装程序，安装完成后，开始菜单有git bash就证明成功了。
-12$ git config --global user.name &#34;Jane&#34;$ ...
+ajax就是async javascript and xml. js本身是单线程同步语言，但是web上很多都是异步发送请求，然后拿到数据渲染到dom，但是我们不可能一直等...
                 
             </p> 
         </div>
@@ -165,27 +163,212 @@ windows上面直接去git官网下载安装程序，安装完成后，开始菜�
         <div class="post-content">
             <div class="post-head home-post-head">
                 <h1 class="post-title"> 
-                    <a href="/git-ssh.html">git中的ssh,https有何不同</a>
+                    <a href="/shallow-copy-deep-copy.html">js浅拷贝深拷贝</a>
                 </h1>
                 <div class="post-meta">  &bull;
                     <time class="post-date" datetime="" title="">
-                        2016年12月07日
+                        2018年05月30日
                     </time>
                 </div>
             </div>
             <p class="brief">
                 
                     
-git中的ssh,https有何不同？
+ 1.基础类型值和引用类型值？
 
-克隆项目的时候，使用ssh的话，你需要配置个人的ssh key添加到server上面。而https方式，任意git clone url都可以;
-push项目的时候，在使用ssh方式时，是不需...
+基础类型值主要是string, number, null, undefined, boolean,这里不考虑es6引用类型值主要是Object, Array复杂类型的数据。当我们在复制值的时候存在两...
+                
+            </p> 
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/es6-arrow-function.html">ES6-箭头函数</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年05月12日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    
+es6中的箭头函数是function(){}的缩写，可以大大减少代码量;arrow function借鉴了cofferscript中的语法。
+
+1234567let add = (a,b) =&amp;gt; &amp;#123;    retur...
+                
+            </p> 
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/es6-class.html">ES6-class</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年05月12日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    javascript中是没有built-in class (类)的概念的，es5中为了模拟类去创造对象，使用构造函数来完成，如下：123456789function Person(name,age,sex)&amp;#123;    this...
+                
+            </p> 
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/es6-let-const.html">ES6-定义变量 let, const</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年05月11日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    1.let,block scopees6以前，新增变量用var,es6可以使用let产生块状作用域。而以前都是function scope;1234if(true)&amp;#123;    var name = &#39;Jane&#39;;&amp;#125;c...
+                
+            </p> 
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/es6-modules.html">ES6-module模块</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年05月08日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    css3中都有@import,而es5以前的模块化都是通过外部库来实现，比如require.js等。es6中，模块化功能主要由import和export来实现。通过export来暴露对外接口，通过import来引入。每个模块都有自己单...
+                
+            </p> 
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/es6-promise.html">ES6-promise</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年05月06日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    promise是取代回调函数的一种异步解决方案。promise是一个对象，包含着未来异步事件的结果，可能是resolve(success),或者是reject(fail)。
+12345678910let myPromise = new...
+                
+            </p> 
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/higher-order-function.html">高阶函数(filter,map,reduce)</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年04月07日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    
+什么是higher order function ? 
+
+高阶函数（Higher Order Function）是functional programming(函数式编程)的一个重要特点。higher order function意...
+                
+            </p> 
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/webpack-1.html">webpack整理一</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2018年01月18日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    之前都是用的vue-cli等脚手架工具，直接生成webpack配置文件，或者是对webpack.config.js了解些，但是并没有自己去手动配置一个自动化项目。整理一下webpack相关知识点。不仅仅是用，而要去理解背后的原理才行。...
+                
+            </p> 
+        </div>
+    </article>
+ 
+    <article class="post">
+        
+        <div class="post-content">
+            <div class="post-head home-post-head">
+                <h1 class="post-title"> 
+                    <a href="/javascript-error-types.html">javascript错误类型</a>
+                </h1>
+                <div class="post-meta">  &bull;
+                    <time class="post-date" datetime="" title="">
+                        2017年12月05日
+                    </time>
+                </div>
+            </div>
+            <p class="brief">
+                
+                    参考mozilla developer.
+
+ReferenceError
+
+reference就是引用错误。比如调用了一个不存在的变量或者方法. Uncaught ReferenceError: sth is not defined
+...
                 
             </p> 
         </div>
     </article>
  
 
+
+    <nav class="pagination" role="navigation">
+        <div id="page-nav">
+            <span class="page-number current">1</span><a class="page-number" href="/categories/JS/page/2/">2</a><a class="page-number" href="/categories/JS/page/3/">3</a><a class="extend next" rel="next" href="/categories/JS/page/2/"><i class='fa fa-angle-right'></i></a>
+        </div>
+    </nav>
 
 
 
@@ -238,7 +421,7 @@ push项目的时候，在使用ssh方式时，是不需...
         
     <div class="widget">
       <h3 class="title">Archives</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/"><i class="fa" aria-hidden="true">July 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/"><i class="fa" aria-hidden="true">June 2018</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">May 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">April 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/"><i class="fa" aria-hidden="true">February 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/"><i class="fa" aria-hidden="true">January 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">December 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/"><i class="fa" aria-hidden="true">July 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">June 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/"><i class="fa" aria-hidden="true">May 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/"><i class="fa" aria-hidden="true">April 2017</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/"><i class="fa" aria-hidden="true">March 2017</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/"><i class="fa" aria-hidden="true">February 2017</i></a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">January 2017</i></a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/"><i class="fa" aria-hidden="true">December 2016</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/"><i class="fa" aria-hidden="true">October 2016</i></a><span class="archive-list-count">1</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/"><i class="fa" aria-hidden="true">July 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/"><i class="fa" aria-hidden="true">June 2018</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">May 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">April 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/"><i class="fa" aria-hidden="true">February 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/"><i class="fa" aria-hidden="true">January 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">December 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/"><i class="fa" aria-hidden="true">July 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">June 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/"><i class="fa" aria-hidden="true">May 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/"><i class="fa" aria-hidden="true">April 2017</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/"><i class="fa" aria-hidden="true">March 2017</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/"><i class="fa" aria-hidden="true">February 2017</i></a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">January 2017</i></a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/"><i class="fa" aria-hidden="true">December 2016</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/"><i class="fa" aria-hidden="true">October 2016</i></a><span class="archive-list-count">1</span></li></ul>
     </div>
 
 
