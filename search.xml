@@ -3,13 +3,48 @@
   
     
     <entry>
-      <title></title>
+      <title>作用域考察点总结</title>
+      <link href="/js-interview-scope.html"/>
+      <url>/js-interview-scope.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>面试中作用域考察点的不完全总结： lexical scope; block scope; 预解析。</p></blockquote><blockquote><p>lexical scope词法作用域</p></blockquote><p>词法作用域。作用域规定了如何查找变量，也就是当前代码对变量的访问权限。词法作用域可以叫做静态作用域。<br>因为是词法作用域，所以函数的作用域在函数定义的时候就决定了,基于函数创建的位置。而与词法作用域相对的是动态作用域，函数的作用域是在函数调用的时候才决定的。</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(a);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">20</span>;</span><br><span class="line">    aaa();</span><br><span class="line">&#125;</span><br><span class="line">bbb();</span><br></pre></td></tr></table></figure><p>在这种情况下，打印出来的是10，而不是20，因为在aaa函数里面，变量a的值是在申明的时候调用的全局变量 var a = 10;</p><p>《JavaScript权威指南》中的例子:</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f();</span><br><span class="line">&#125;</span><br><span class="line">checkscope();</span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line">checkscope()();</span><br></pre></td></tr></table></figure><p>两段代码都会打印：local scope。因为JavaScript采用的是词法作用域，函数的作用域基于函数创建的位置。</p><blockquote><p>block scope块状作用域</p></blockquote><p>es6之后有了let才有了块状作用域，而之前要形成封闭作用域必须写在function里面。对应考题：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">12</span>, <span class="number">15</span>, <span class="number">21</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>这里打印的是undefined，这里setTimeout还涉及到js里面单线程的问题。var i写在for循环里面，外面也是可以访问得到的，每一次循环并没有创建一个封闭的作用域，<br>导致每次循环完之后i的值都是一个，并且最后执行i++;所以i就变成了4，而arr[4]是undefined。一个简单的解决思路就是把var i换成let i;</p><blockquote><p>Hoisting 预解析（申明提升）</p></blockquote><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tt = <span class="string">'aa'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(tt);</span><br><span class="line">    <span class="keyword">var</span> tt = <span class="string">'dd'</span>;</span><br><span class="line">    alert(tt);</span><br><span class="line">&#125;</span><br><span class="line">test(); <span class="comment">// undefined, dd</span></span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">'outside'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logIt</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(text);</span><br><span class="line">    <span class="keyword">var</span> text = <span class="string">'inside'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">logIt(); <span class="comment">//不是inside,也不是outside,而是undefined.</span></span><br></pre></td></tr></table></figure><p>另外需要注意的是函数声明优于变量声明;</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    alert(a)</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">aa(<span class="number">5</span>);</span><br><span class="line">alert(a);<span class="comment">//5,0   在函数体内，参数a的优先级高于变量a</span></span><br></pre></td></tr></table></figure><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = a;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> c = b;</span><br><span class="line">        <span class="built_in">console</span>.log(c)</span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    inner();</span><br><span class="line">&#125;</span><br><span class="line">outer()</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> JS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Interview </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>css水平垂直居中总结</title>
       <link href="/css-center.html"/>
       <url>/css-center.html</url>
       
-        <content type="html"><![CDATA[]]></content>
+        <content type="html"><![CDATA[<p>css中的居中分为水平居中，垂直居中，或者两者。</p><p><a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="noopener">https://css-tricks.com/centering-css-complete-guide/</a></p><blockquote><p>水平居中</p></blockquote><pre><code>在一个block-level element里面，如果child是inline,inline-block等，那么直接在block-level上面添加text-align:center就可以对于块状元素，添加宽度，设置margin：auto也可以直接水平居中。</code></pre><blockquote><p>垂直居中</p></blockquote><pre><code>如果是inline,inline-block等类型;    如果是单行文本，直接padding上下，或者height与line-height等高即可;    如果是多行文本，vertical-align:middle如果是块状元素;    如果高度已知: 父元素绝对定位，子元素高度top：50%；hgeight: 100px；margin-top父值一半；    如果高度未知：top: 50%;transform: translateY(-50%);    如果可以使用flexbox: </code></pre><blockquote><p>同时水平和垂直居中：  </p></blockquote><pre><code>1,高度已知，同上；2，未知等，使用transform;3, top:0,right: 0,bottom: 0;left: 0;margin: auto也可以;</code></pre>]]></content>
       
       
+      <categories>
+          
+          <category> CSS </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Interview </tag>
+            
+        </tags>
       
     </entry>
     
@@ -1018,6 +1053,29 @@
     </entry>
     
     <entry>
+      <title>chrome devtool技巧总结</title>
+      <link href="/chrome-devtool-1.html"/>
+      <url>/chrome-devtool-1.html</url>
+      
+        <content type="html"><![CDATA[<p>整理一下最近搜集的以及平时项目中使用到的一些tips。F12或者在网页中鼠标右键检查可以打开devtool控制台</p><h3 id="Element-隐藏和显示某个片段代码"><a href="#Element-隐藏和显示某个片段代码" class="headerlink" title="Element 隐藏和显示某个片段代码"></a>Element 隐藏和显示某个片段代码</h3><p>在网页中找到目标，鼠标右键检查可以在element中定位到对应代码，按h可以进行 隐藏/显示的操作。也可以直接 del 进行删除</p><h3 id="查看元素hover-focus等状态的变化"><a href="#查看元素hover-focus等状态的变化" class="headerlink" title="查看元素hover,focus等状态的变化"></a>查看元素hover,focus等状态的变化</h3><p><img src="https://img.mukewang.com/5660fa130001655300080016.gif" alt=""></p><h3 id="color-picker"><a href="#color-picker" class="headerlink" title="color picker"></a>color picker</h3><p>在devtool的样式编辑器里面点击笔按钮，可以获取网页上点击区域的颜色<br><img src="https://img.mukewang.com/5660f9f40001554600010001.gif" alt=""></p><h3 id="文件切换"><a href="#文件切换" class="headerlink" title="文件切换"></a>文件切换</h3><p>以前想看线上引用的某个js文件，都是先找到source面板。后来发现开发者工具中使用ctrl + p 可以快速寻找该项目的任意文件。<br><img src="https://img.mukewang.com/5660f81e00018ad600010001.gif" alt=""></p><h3 id="搜索任意方法"><a href="#搜索任意方法" class="headerlink" title="搜索任意方法"></a>搜索任意方法</h3><p>ctrl + shift + f 就可在该项目中搜索任意方法等，也支持正则哦</p><p><img src="https://img.mukewang.com/5660f83d000156ca00010016.gif" alt=""></p><h3 id="跳转到任意行数"><a href="#跳转到任意行数" class="headerlink" title="跳转到任意行数"></a>跳转到任意行数</h3><p>ctrl + g</p><h3 id="console-log-DOM选择"><a href="#console-log-DOM选择" class="headerlink" title="console.log DOM选择"></a>console.log DOM选择</h3><ul><li>$() - document.querySelector()的缩写，返回dom中第一个与选择器匹配的元素</li><li>$$() - document.querySelectorAll()的缩写，返回dom中与选择器匹配的所有元素，是个数组</li><li>$0 依次返回五个最近你在元素面板选择过的DOM元素的历史记录</li></ul><h3 id="使压缩的js可读"><a href="#使压缩的js可读" class="headerlink" title="使压缩的js可读"></a>使压缩的js可读</h3><p><img src="https://img.mukewang.com/5660f939000145bc00010001.gif" alt=""></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CSS3 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSS3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>CSS3动画(一)实现圣诞闪烁灯光效果</title>
       <link href="/animate.html"/>
       <url>/animate.html</url>
@@ -1046,29 +1104,6 @@
       <url>/flexbox.html</url>
       
         <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> CSS3 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSS3 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
-      <title>chrome devtool技巧总结</title>
-      <link href="/chrome-devtool-1.html"/>
-      <url>/chrome-devtool-1.html</url>
-      
-        <content type="html"><![CDATA[<p>整理一下最近搜集的以及平时项目中使用到的一些tips。F12或者在网页中鼠标右键检查可以打开devtool控制台</p><h3 id="Element-隐藏和显示某个片段代码"><a href="#Element-隐藏和显示某个片段代码" class="headerlink" title="Element 隐藏和显示某个片段代码"></a>Element 隐藏和显示某个片段代码</h3><p>在网页中找到目标，鼠标右键检查可以在element中定位到对应代码，按h可以进行 隐藏/显示的操作。也可以直接 del 进行删除</p><h3 id="查看元素hover-focus等状态的变化"><a href="#查看元素hover-focus等状态的变化" class="headerlink" title="查看元素hover,focus等状态的变化"></a>查看元素hover,focus等状态的变化</h3><p><img src="https://img.mukewang.com/5660fa130001655300080016.gif" alt=""></p><h3 id="color-picker"><a href="#color-picker" class="headerlink" title="color picker"></a>color picker</h3><p>在devtool的样式编辑器里面点击笔按钮，可以获取网页上点击区域的颜色<br><img src="https://img.mukewang.com/5660f9f40001554600010001.gif" alt=""></p><h3 id="文件切换"><a href="#文件切换" class="headerlink" title="文件切换"></a>文件切换</h3><p>以前想看线上引用的某个js文件，都是先找到source面板。后来发现开发者工具中使用ctrl + p 可以快速寻找该项目的任意文件。<br><img src="https://img.mukewang.com/5660f81e00018ad600010001.gif" alt=""></p><h3 id="搜索任意方法"><a href="#搜索任意方法" class="headerlink" title="搜索任意方法"></a>搜索任意方法</h3><p>ctrl + shift + f 就可在该项目中搜索任意方法等，也支持正则哦</p><p><img src="https://img.mukewang.com/5660f83d000156ca00010016.gif" alt=""></p><h3 id="跳转到任意行数"><a href="#跳转到任意行数" class="headerlink" title="跳转到任意行数"></a>跳转到任意行数</h3><p>ctrl + g</p><h3 id="console-log-DOM选择"><a href="#console-log-DOM选择" class="headerlink" title="console.log DOM选择"></a>console.log DOM选择</h3><ul><li>$() - document.querySelector()的缩写，返回dom中第一个与选择器匹配的元素</li><li>$$() - document.querySelectorAll()的缩写，返回dom中与选择器匹配的所有元素，是个数组</li><li>$0 依次返回五个最近你在元素面板选择过的DOM元素的历史记录</li></ul><h3 id="使压缩的js可读"><a href="#使压缩的js可读" class="headerlink" title="使压缩的js可读"></a>使压缩的js可读</h3><p><img src="https://img.mukewang.com/5660f939000145bc00010001.gif" alt=""></p>]]></content>
       
       
       <categories>

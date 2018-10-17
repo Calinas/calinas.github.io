@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>Category: Nodejs | oneCoder</title>
+<title>作用域考察点总结 | oneCoder</title>
 
 
     <link rel="alternate" href="/atom.xml" title="oneCoder" type="application/atom+xml">
@@ -126,257 +126,112 @@
     <section class="content-wrap">
         <div class="container">
             <div class="row">
-                <main class="col-md-8 main-content ">
-                    <h3> 
+                <main class="col-md-8 main-content m-post">
+                    <p id="process"></p>
+<article class="post">
+    <div class="post-head">
+        <h1 id="作用域考察点总结">
+            
+	            作用域考察点总结
+            
+        </h1>
+        <div class="post-meta">
     
-        Nodejs 
     
-</h3>
+    <span class="categories-meta fa-wrap">
+        <i class="fa fa-folder-open-o"></i>
+        <a href="/categories/JS">
+            JS
+        </a>
+    </span>
+    
+    
+    <span class="fa-wrap">
+        <i class="fa fa-tags"></i>
+        <span class="tags-meta">
+            
+                
+                    <a href="/tags/Interview" title='Interview'>
+                        Interview
+                    </a>
+                
+            
+        </span>
+    </span>
+    
 
-    <article class="post">
+    
         
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-12.html">Nodejs系列从入门到制作APP(十二) stream/buffer</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月12日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    1. 什么是buffer下载资源的时候，一般有接触buffering这个单词，表示正在缓冲等。怎么去理解nodejs中的buffer呢？比如说有一个人叫做node,住在深山里，有天去了森林发现了很多已经砍好的柴火，想要自己弄回去用，但是他不可能一次性全部弄完，这个时候buffer就像是他的拖拉机，一次性能装多少就先送货回家，然后下次再来。相当于是把一整批资源分成小的块，一旦获取到了资源就先送过去，而不是一直等到所有的资源都获取玩才行动。…
-                
-            </p> 
+        <span class="fa-wrap">
+            <i class="fa fa-clock-o"></i>
+            <span class="date-meta">2018/10/13</span>
+        </span>
+    
+</div>
+
+            
+            
+    </div>
+    
+    <div class="post-body post-content">
+        <blockquote>
+<p>面试中作用域考察点的不完全总结： lexical scope; block scope; 预解析。</p>
+</blockquote>
+<blockquote>
+<p>lexical scope词法作用域</p>
+</blockquote>
+<p>词法作用域。作用域规定了如何查找变量，也就是当前代码对变量的访问权限。词法作用域可以叫做静态作用域。<br>因为是词法作用域，所以函数的作用域在函数定义的时候就决定了,基于函数创建的位置。而与词法作用域相对的是动态作用域，函数的作用域是在函数调用的时候才决定的。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aaa</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(a);</span><br><span class="line">&#125;;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">bbb</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">20</span>;</span><br><span class="line">    aaa();</span><br><span class="line">&#125;</span><br><span class="line">bbb();</span><br></pre></td></tr></table></figure>
+<p>在这种情况下，打印出来的是10，而不是20，因为在aaa函数里面，变量a的值是在申明的时候调用的全局变量 var a = 10;</p>
+<p>《JavaScript权威指南》中的例子:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f();</span><br><span class="line">&#125;</span><br><span class="line">checkscope();</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> scope = <span class="string">"global scope"</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkscope</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> scope = <span class="string">"local scope"</span>;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> scope;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> f;</span><br><span class="line">&#125;</span><br><span class="line">checkscope()();</span><br></pre></td></tr></table></figure>
+<p>两段代码都会打印：local scope。因为JavaScript采用的是词法作用域，函数的作用域基于函数创建的位置。</p>
+<blockquote>
+<p>block scope块状作用域</p>
+</blockquote>
+<p>es6之后有了let才有了块状作用域，而之前要形成封闭作用域必须写在function里面。对应考题：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">10</span>, <span class="number">12</span>, <span class="number">15</span>, <span class="number">21</span>];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; arr.length; i++) &#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(arr[i]);</span><br><span class="line">    &#125;, <span class="number">3000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这里打印的是undefined，这里setTimeout还涉及到js里面单线程的问题。var i写在for循环里面，外面也是可以访问得到的，每一次循环并没有创建一个封闭的作用域，<br>导致每次循环完之后i的值都是一个，并且最后执行i++;所以i就变成了4，而arr[4]是undefined。一个简单的解决思路就是把var i换成let i;</p>
+<blockquote>
+<p>Hoisting 预解析（申明提升）</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> tt = <span class="string">'aa'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    alert(tt);</span><br><span class="line">    <span class="keyword">var</span> tt = <span class="string">'dd'</span>;</span><br><span class="line">    alert(tt);</span><br><span class="line">&#125;</span><br><span class="line">test(); <span class="comment">// undefined, dd</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> text = <span class="string">'outside'</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">logIt</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(text);</span><br><span class="line">    <span class="keyword">var</span> text = <span class="string">'inside'</span>;</span><br><span class="line">&#125;;</span><br><span class="line">logIt(); <span class="comment">//不是inside,也不是outside,而是undefined.</span></span><br></pre></td></tr></table></figure>
+<p>另外需要注意的是函数声明优于变量声明;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">aa</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">    alert(a)</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">3</span></span><br><span class="line">&#125;</span><br><span class="line">aa(<span class="number">5</span>);</span><br><span class="line">alert(a);<span class="comment">//5,0   在函数体内，参数a的优先级高于变量a</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> b = a;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="keyword">var</span> c = b;</span><br><span class="line">        <span class="built_in">console</span>.log(c)</span><br><span class="line">        <span class="keyword">var</span> b = <span class="number">20</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    inner();</span><br><span class="line">&#125;</span><br><span class="line">outer()</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    <div class="post-footer">
+        <div>
+            
+                转载声明：商业转载请联系作者获得授权,非商业转载请注明出处 © <a href="" target="_blank">Snippet</a>
+            
         </div>
-    </article>
- 
-    <article class="post">
+        <div>
+            
+        </div>
+    </div>
+</article>
+
+<div class="article-nav prev-next-wrap clearfix">
+    
+    
+        <a href="/css-center.html" class="next-post btn btn-default" title='css水平垂直居中总结'>
+            <span class="hidden-lg">下一篇</span>
+            <span class="hidden-xs">css水平垂直居中总结</span><i class="fa fa-angle-right fa-fw"></i>
+        </a>
+    
+</div>
+
+
+    <div id="comments">
         
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-10.html">Nodejs系列从入门到制作APP(十一)创建server</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月12日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    1. server是什么？…
-                
-            </p> 
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-7.html">Nodejs系列从入门到制作APP(七)模块的不同写法</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月10日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    上一次的module.export是只有一个模块叫做number, 但是在实际中，不能只有一个，比如:在 module.js文件里面写入：…
-                
-            </p> 
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-8.html">Nodejs系列从入门到制作APP(八)Event模块</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月08日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    event 模块…
-                
-            </p> 
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-6.html">Nodejs系列从入门到制作APP(六)模块和require()</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月07日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    当我们写nodejs app的时候，并不会把所有的代码都放在一个文件里面，这样在后期很难维护，代码复用低。所以我们把整个代码分成不同module(模块)，然后在需要的时候，通过require来使用;…
-                
-            </p> 
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-5.html">Nodejs系列从入门到制作APP(五)函数表达式</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月05日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    函数表达式和nodejs有什么联系呢？因为函数表达式这种模式在nodejs时也会使用。…
-                
-            </p> 
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-4.html">Nodejs系列从入门到制作APP(四)全局对象</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月04日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    全局对象在js中，window是全局对象，但当我们在nodejs中写js的时候，全局对象不再是window, 因为我们不再是浏览器客户端，而是服务端。
-Nodejs中的global对象就是其本身，但是它有很多的方法。比如&amp;#95;&amp;#95;dirname, &amp;#95;&amp;#95;filename, console, exports, module, setInterval, setTimeout等；
-小案例：( setInterval, 和 setTimeout用法)…
-                
-            </p> 
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-3.html">Nodejs系列从入门到制作APP(三)V8 引擎</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月03日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    什么是V8引擎摘自百度，感觉比我个人的语言解释的清楚多了：
+   <p>评论系统未开启，无法评论！</p>
 
-V8使用C++开发，并在谷歌浏览器中使用。在运行JavaScript之前，相比其它的JavaScript的引擎转换成字节码或解释执行，V8将其编译成原生机器码（IA-32,...
-                
-            </p> 
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-2.html">Nodejs系列从入门到制作APP(二)安装</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月02日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    安装直接去官网https://nodejs.org/en/ ， 按照提示来操作就行。…
-                
-            </p> 
-        </div>
-    </article>
- 
-    <article class="post">
-        
-        <div class="post-content">
-            <div class="post-head home-post-head">
-                <h1 class="post-title"> 
-                    <a href="/nodejs-app-1.html">Nodejs系列从入门到制作APP(一)介绍</a>
-                </h1>
-                <div class="post-meta">  &bull;
-                    <time class="post-date" datetime="" title="">
-                        2017年01月01日
-                    </time>
-                </div>
-            </div>
-            <p class="brief">
-                
-                    
-Nodejs系列从入门到APP大致分为三个部分:
-
-
-Nodejs工作原理等实现，
-
-v8 engine
-module
-event emitter
-file
-
-
-server相关：
-
-routing
-express
-template
-
-
-最后要搭建一个清单列表;
-…
-                
-            </p> 
-        </div>
-    </article>
- 
-
-
-    <nav class="pagination" role="navigation">
-        <div id="page-nav">
-            <a class="extend prev" rel="prev" href="/categories/Nodejs/"><i class='fa fa-angle-left'></i></a><a class="page-number" href="/categories/Nodejs/">1</a><span class="page-number current">2</span>
-        </div>
-    </nav>
-
-
-
+    </div>
 
 
 

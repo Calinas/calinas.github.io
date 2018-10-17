@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>oneCoder</title>
+<title>css水平垂直居中总结 | oneCoder</title>
 
 
     <link rel="alternate" href="/atom.xml" title="oneCoder" type="application/atom+xml">
@@ -130,9 +130,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="">
+        <h1 id="css水平垂直居中总结">
             
-	            NO Title!
+	            css水平垂直居中总结
             
         </h1>
         <div class="post-meta">
@@ -140,8 +140,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/ ">
-             
+        <a href="/categories/CSS">
+            CSS
         </a>
     </span>
     
@@ -150,6 +150,10 @@
         <i class="fa fa-tags"></i>
         <span class="tags-meta">
             
+                
+                    <a href="/tags/Interview" title='Interview'>
+                        Interview
+                    </a>
                 
             
         </span>
@@ -160,7 +164,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2018/10/09</span>
+            <span class="date-meta">2018/10/01</span>
         </span>
     
 </div>
@@ -170,7 +174,32 @@
     </div>
     
     <div class="post-body post-content">
-        
+        <p>css中的居中分为水平居中，垂直居中，或者两者。</p>
+<p><a href="https://css-tricks.com/centering-css-complete-guide/" target="_blank" rel="noopener">https://css-tricks.com/centering-css-complete-guide/</a></p>
+<blockquote>
+<p>水平居中</p>
+</blockquote>
+<pre><code>在一个block-level element里面，如果child是inline,inline-block等，那么直接在block-level上面添加text-align:center就可以
+
+对于块状元素，添加宽度，设置margin：auto也可以直接水平居中。
+</code></pre><blockquote>
+<p>垂直居中</p>
+</blockquote>
+<pre><code>如果是inline,inline-block等类型;
+    如果是单行文本，直接padding上下，或者height与line-height等高即可;
+    如果是多行文本，vertical-align:middle
+
+如果是块状元素;
+    如果高度已知: 父元素绝对定位，子元素高度top：50%；hgeight: 100px；margin-top父值一半；
+    如果高度未知：top: 50%;transform: translateY(-50%);
+    如果可以使用flexbox: 
+</code></pre><blockquote>
+<p>同时水平和垂直居中：  </p>
+</blockquote>
+<pre><code>1,高度已知，同上；
+2，未知等，使用transform;
+3, top:0,right: 0,bottom: 0;left: 0;margin: auto也可以;
+</code></pre>
     </div>
 
     <div class="post-footer">
@@ -186,6 +215,11 @@
 </article>
 
 <div class="article-nav prev-next-wrap clearfix">
+    
+        <a href="/js-interview-scope.html" class="pre-post btn btn-default" title='作用域考察点总结'>
+            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
+            <span class="hidden-xs">作用域考察点总结</span>
+        </a>
     
     
         <a href="/git.html" class="next-post btn btn-default" title='git总结'>
@@ -242,7 +276,7 @@
         
     <div class="widget">
         <h3 class="title">Categories</h3>
-        <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/CSS/"><i class="fa" aria-hidden="true">CSS</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS3/"><i class="fa" aria-hidden="true">CSS3</i></a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/"><i class="fa" aria-hidden="true">JS</i></a><span class="category-list-count">22</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nodejs/"><i class="fa" aria-hidden="true">Nodejs</i></a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/"><i class="fa" aria-hidden="true">PHP</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SASS/"><i class="fa" aria-hidden="true">SASS</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TED/"><i class="fa" aria-hidden="true">TED</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vuejs/"><i class="fa" aria-hidden="true">Vuejs</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Website-Performance/"><i class="fa" aria-hidden="true">Website Performance</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Wordpress/"><i class="fa" aria-hidden="true">Wordpress</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/canvas/"><i class="fa" aria-hidden="true">canvas</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/"><i class="fa" aria-hidden="true">http</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/"><i class="fa" aria-hidden="true">jQuery</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/"><i class="fa" aria-hidden="true">js</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/"><i class="fa" aria-hidden="true">未分类</i></a><span class="category-list-count">1</span></li></ul>
+        <ul class="category-list"><li class="category-list-item"><a class="category-list-link current" href="/categories/CSS/"><i class="fa" aria-hidden="true">CSS</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/CSS3/"><i class="fa" aria-hidden="true">CSS3</i></a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JS/"><i class="fa" aria-hidden="true">JS</i></a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Nodejs/"><i class="fa" aria-hidden="true">Nodejs</i></a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/"><i class="fa" aria-hidden="true">PHP</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/SASS/"><i class="fa" aria-hidden="true">SASS</i></a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/TED/"><i class="fa" aria-hidden="true">TED</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Vuejs/"><i class="fa" aria-hidden="true">Vuejs</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Website-Performance/"><i class="fa" aria-hidden="true">Website Performance</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Wordpress/"><i class="fa" aria-hidden="true">Wordpress</i></a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/canvas/"><i class="fa" aria-hidden="true">canvas</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/http/"><i class="fa" aria-hidden="true">http</i></a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/jQuery/"><i class="fa" aria-hidden="true">jQuery</i></a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/js/"><i class="fa" aria-hidden="true">js</i></a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/未分类/"><i class="fa" aria-hidden="true">未分类</i></a><span class="category-list-count">1</span></li></ul>
     </div>
 
 
@@ -250,7 +284,7 @@
         
     <div class="widget">
       <h3 class="title">Archives</h3>
-        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/"><i class="fa" aria-hidden="true">July 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/"><i class="fa" aria-hidden="true">June 2018</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">May 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">April 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/"><i class="fa" aria-hidden="true">February 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/"><i class="fa" aria-hidden="true">January 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">December 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/"><i class="fa" aria-hidden="true">July 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">June 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/"><i class="fa" aria-hidden="true">May 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/"><i class="fa" aria-hidden="true">April 2017</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/"><i class="fa" aria-hidden="true">March 2017</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/"><i class="fa" aria-hidden="true">February 2017</i></a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">January 2017</i></a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/"><i class="fa" aria-hidden="true">December 2016</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/"><i class="fa" aria-hidden="true">October 2016</i></a><span class="archive-list-count">1</span></li></ul>
+        <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/"><i class="fa" aria-hidden="true">October 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/"><i class="fa" aria-hidden="true">September 2018</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/"><i class="fa" aria-hidden="true">August 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/"><i class="fa" aria-hidden="true">July 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/"><i class="fa" aria-hidden="true">June 2018</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/"><i class="fa" aria-hidden="true">May 2018</i></a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/"><i class="fa" aria-hidden="true">April 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/02/"><i class="fa" aria-hidden="true">February 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/01/"><i class="fa" aria-hidden="true">January 2018</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/"><i class="fa" aria-hidden="true">December 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/"><i class="fa" aria-hidden="true">July 2017</i></a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/"><i class="fa" aria-hidden="true">June 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/"><i class="fa" aria-hidden="true">May 2017</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/"><i class="fa" aria-hidden="true">April 2017</i></a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/"><i class="fa" aria-hidden="true">March 2017</i></a><span class="archive-list-count">9</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/"><i class="fa" aria-hidden="true">February 2017</i></a><span class="archive-list-count">16</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/"><i class="fa" aria-hidden="true">January 2017</i></a><span class="archive-list-count">21</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/"><i class="fa" aria-hidden="true">December 2016</i></a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/"><i class="fa" aria-hidden="true">November 2016</i></a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/"><i class="fa" aria-hidden="true">October 2016</i></a><span class="archive-list-count">1</span></li></ul>
     </div>
 
 
@@ -259,7 +293,7 @@
   <div class="widget">
     <h3 class="title">Tag Cloud</h3>
     <div class="content tag-cloud">
-        <a href="/tags/Bug/" style="font-size: 10px;">Bug</a> <a href="/tags/CSS3/" style="font-size: 17.14px;">CSS3</a> <a href="/tags/Interview/" style="font-size: 10px;">Interview</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Nodejs/" style="font-size: 18.57px;">Nodejs</a> <a href="/tags/PHP/" style="font-size: 15.71px;">PHP</a> <a href="/tags/SASS/" style="font-size: 15.71px;">SASS</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/TED/" style="font-size: 10px;">TED</a> <a href="/tags/Vuejs/" style="font-size: 14.29px;">Vuejs</a> <a href="/tags/Website-Performance/" style="font-size: 11.43px;">Website Performance</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.86px;">jQuery</a> <a href="/tags/js/" style="font-size: 11.43px;">js</a> <a href="/tags/wordpress/" style="font-size: 12.86px;">wordpress</a>
+        <a href="/tags/Bug/" style="font-size: 10px;">Bug</a> <a href="/tags/CSS3/" style="font-size: 17.14px;">CSS3</a> <a href="/tags/Interview/" style="font-size: 12.86px;">Interview</a> <a href="/tags/JS/" style="font-size: 20px;">JS</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Nodejs/" style="font-size: 18.57px;">Nodejs</a> <a href="/tags/PHP/" style="font-size: 15.71px;">PHP</a> <a href="/tags/SASS/" style="font-size: 15.71px;">SASS</a> <a href="/tags/SEO/" style="font-size: 10px;">SEO</a> <a href="/tags/TED/" style="font-size: 10px;">TED</a> <a href="/tags/Vuejs/" style="font-size: 14.29px;">Vuejs</a> <a href="/tags/Website-Performance/" style="font-size: 11.43px;">Website Performance</a> <a href="/tags/canvas/" style="font-size: 10px;">canvas</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/jQuery/" style="font-size: 12.86px;">jQuery</a> <a href="/tags/js/" style="font-size: 11.43px;">js</a> <a href="/tags/wordpress/" style="font-size: 12.86px;">wordpress</a>
     </div>
   </div>
 
