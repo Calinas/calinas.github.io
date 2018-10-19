@@ -3,6 +3,29 @@
   
     
     <entry>
+      <title>数据类型相关</title>
+      <link href="/js-interview-array.html"/>
+      <url>/js-interview-array.html</url>
+      
+        <content type="html"><![CDATA[<blockquote><p>Javascript中的数据类型有哪些？</p></blockquote><p>数据类型包括基础数据类型(值类型)或者引用数据类型。<br>基础数据类型：undefined, null, number, boolean, string, Symbol(es6);<br>复杂数据类型：对象等。包括：内部对象（Array、Function等），宿主对象（window）和自定义对象。</p><blockquote><p>typeof返回值</p></blockquote><p>“number”,“string”,“boolean”,“object”,”symbol”,“function”,“undefined”。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(typeof null);  // object</span><br><span class="line">alert(typeof undefined);  // undefined</span><br><span class="line">alert(typeof NaN);  // number</span><br></pre></td></tr></table></figure><blockquote><p>null和undefined比较</p></blockquote><p>不同：<br>1，进行数字类型转换时，null返回0，undefined返回NaN<br>2，undefined实际上代表了不存在的值（non-existence of a value）。而null通常用作一个空引用一个空对象的预期,就像一个占位符<br>3，typeof null返回的是object，这是一个一直未修复的bug。</p><blockquote><p>如何判断一个变量是数组</p></blockquote><p>判断数据类型最先想到的是typeof, 但是typeof只能用来判断基本数据类型。引用类型的返回都是object,(函数返回function);</p><p>objA instanceof Object,  objA作为a的实例，有<strong>proto</strong>隐式原型，Object有显式原型prototype,而<strong>proto</strong>和prototype都指向同一个原型。<br>如果objA的隐式原型和Object的显式原型指向同一个，则返回ture;</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">23</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(ary <span class="keyword">instanceof</span> <span class="built_in">Array</span>)<span class="comment">//t</span></span><br></pre></td></tr></table></figure><p>这种情况下的确可以检测出属于数组。但是js中Object是所有的基础，所以：</p><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure><p>所以这种情况就无法判断了。</p><p>可以直接使用Array.isArray()方法来判断。<br>也可以通过Object.prototype.toString.call(arr)来的判断。</p><p>To be continued</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Interview </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Interview </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
       <title>作用域考察点总结</title>
       <link href="/js-interview-scope.html"/>
       <url>/js-interview-scope.html</url>
@@ -1053,29 +1076,6 @@
     </entry>
     
     <entry>
-      <title>chrome devtool技巧总结</title>
-      <link href="/chrome-devtool-1.html"/>
-      <url>/chrome-devtool-1.html</url>
-      
-        <content type="html"><![CDATA[<p>整理一下最近搜集的以及平时项目中使用到的一些tips。F12或者在网页中鼠标右键检查可以打开devtool控制台</p><h3 id="Element-隐藏和显示某个片段代码"><a href="#Element-隐藏和显示某个片段代码" class="headerlink" title="Element 隐藏和显示某个片段代码"></a>Element 隐藏和显示某个片段代码</h3><p>在网页中找到目标，鼠标右键检查可以在element中定位到对应代码，按h可以进行 隐藏/显示的操作。也可以直接 del 进行删除</p><h3 id="查看元素hover-focus等状态的变化"><a href="#查看元素hover-focus等状态的变化" class="headerlink" title="查看元素hover,focus等状态的变化"></a>查看元素hover,focus等状态的变化</h3><p><img src="https://img.mukewang.com/5660fa130001655300080016.gif" alt=""></p><h3 id="color-picker"><a href="#color-picker" class="headerlink" title="color picker"></a>color picker</h3><p>在devtool的样式编辑器里面点击笔按钮，可以获取网页上点击区域的颜色<br><img src="https://img.mukewang.com/5660f9f40001554600010001.gif" alt=""></p><h3 id="文件切换"><a href="#文件切换" class="headerlink" title="文件切换"></a>文件切换</h3><p>以前想看线上引用的某个js文件，都是先找到source面板。后来发现开发者工具中使用ctrl + p 可以快速寻找该项目的任意文件。<br><img src="https://img.mukewang.com/5660f81e00018ad600010001.gif" alt=""></p><h3 id="搜索任意方法"><a href="#搜索任意方法" class="headerlink" title="搜索任意方法"></a>搜索任意方法</h3><p>ctrl + shift + f 就可在该项目中搜索任意方法等，也支持正则哦</p><p><img src="https://img.mukewang.com/5660f83d000156ca00010016.gif" alt=""></p><h3 id="跳转到任意行数"><a href="#跳转到任意行数" class="headerlink" title="跳转到任意行数"></a>跳转到任意行数</h3><p>ctrl + g</p><h3 id="console-log-DOM选择"><a href="#console-log-DOM选择" class="headerlink" title="console.log DOM选择"></a>console.log DOM选择</h3><ul><li>$() - document.querySelector()的缩写，返回dom中第一个与选择器匹配的元素</li><li>$$() - document.querySelectorAll()的缩写，返回dom中与选择器匹配的所有元素，是个数组</li><li>$0 依次返回五个最近你在元素面板选择过的DOM元素的历史记录</li></ul><h3 id="使压缩的js可读"><a href="#使压缩的js可读" class="headerlink" title="使压缩的js可读"></a>使压缩的js可读</h3><p><img src="https://img.mukewang.com/5660f939000145bc00010001.gif" alt=""></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> CSS3 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CSS3 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    <entry>
       <title>CSS3动画(一)实现圣诞闪烁灯光效果</title>
       <link href="/animate.html"/>
       <url>/animate.html</url>
@@ -1104,6 +1104,29 @@
       <url>/flexbox.html</url>
       
         <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> CSS3 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CSS3 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    <entry>
+      <title>chrome devtool技巧总结</title>
+      <link href="/chrome-devtool-1.html"/>
+      <url>/chrome-devtool-1.html</url>
+      
+        <content type="html"><![CDATA[<p>整理一下最近搜集的以及平时项目中使用到的一些tips。F12或者在网页中鼠标右键检查可以打开devtool控制台</p><h3 id="Element-隐藏和显示某个片段代码"><a href="#Element-隐藏和显示某个片段代码" class="headerlink" title="Element 隐藏和显示某个片段代码"></a>Element 隐藏和显示某个片段代码</h3><p>在网页中找到目标，鼠标右键检查可以在element中定位到对应代码，按h可以进行 隐藏/显示的操作。也可以直接 del 进行删除</p><h3 id="查看元素hover-focus等状态的变化"><a href="#查看元素hover-focus等状态的变化" class="headerlink" title="查看元素hover,focus等状态的变化"></a>查看元素hover,focus等状态的变化</h3><p><img src="https://img.mukewang.com/5660fa130001655300080016.gif" alt=""></p><h3 id="color-picker"><a href="#color-picker" class="headerlink" title="color picker"></a>color picker</h3><p>在devtool的样式编辑器里面点击笔按钮，可以获取网页上点击区域的颜色<br><img src="https://img.mukewang.com/5660f9f40001554600010001.gif" alt=""></p><h3 id="文件切换"><a href="#文件切换" class="headerlink" title="文件切换"></a>文件切换</h3><p>以前想看线上引用的某个js文件，都是先找到source面板。后来发现开发者工具中使用ctrl + p 可以快速寻找该项目的任意文件。<br><img src="https://img.mukewang.com/5660f81e00018ad600010001.gif" alt=""></p><h3 id="搜索任意方法"><a href="#搜索任意方法" class="headerlink" title="搜索任意方法"></a>搜索任意方法</h3><p>ctrl + shift + f 就可在该项目中搜索任意方法等，也支持正则哦</p><p><img src="https://img.mukewang.com/5660f83d000156ca00010016.gif" alt=""></p><h3 id="跳转到任意行数"><a href="#跳转到任意行数" class="headerlink" title="跳转到任意行数"></a>跳转到任意行数</h3><p>ctrl + g</p><h3 id="console-log-DOM选择"><a href="#console-log-DOM选择" class="headerlink" title="console.log DOM选择"></a>console.log DOM选择</h3><ul><li>$() - document.querySelector()的缩写，返回dom中第一个与选择器匹配的元素</li><li>$$() - document.querySelectorAll()的缩写，返回dom中与选择器匹配的所有元素，是个数组</li><li>$0 依次返回五个最近你在元素面板选择过的DOM元素的历史记录</li></ul><h3 id="使压缩的js可读"><a href="#使压缩的js可读" class="headerlink" title="使压缩的js可读"></a>使压缩的js可读</h3><p><img src="https://img.mukewang.com/5660f939000145bc00010001.gif" alt=""></p>]]></content>
       
       
       <categories>

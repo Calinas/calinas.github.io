@@ -27,7 +27,7 @@
     <!--Title-->
 
 
-<title>页面预加载动画preloader | oneCoder</title>
+<title>数据类型相关 | oneCoder</title>
 
 
     <link rel="alternate" href="/atom.xml" title="oneCoder" type="application/atom+xml">
@@ -130,9 +130,9 @@
                     <p id="process"></p>
 <article class="post">
     <div class="post-head">
-        <h1 id="页面预加载动画preloader">
+        <h1 id="数据类型相关">
             
-	            页面预加载动画preloader
+	            数据类型相关
             
         </h1>
         <div class="post-meta">
@@ -140,8 +140,8 @@
     
     <span class="categories-meta fa-wrap">
         <i class="fa fa-folder-open-o"></i>
-        <a href="/categories/JS">
-            JS
+        <a href="/categories/Interview">
+            Interview
         </a>
     </span>
     
@@ -151,8 +151,8 @@
         <span class="tags-meta">
             
                 
-                    <a href="/tags/JS" title='JS'>
-                        JS
+                    <a href="/tags/Interview" title='Interview'>
+                        Interview
                     </a>
                 
             
@@ -164,7 +164,7 @@
         
         <span class="fa-wrap">
             <i class="fa fa-clock-o"></i>
-            <span class="date-meta">2017/02/20</span>
+            <span class="date-meta">2018/10/18</span>
         </span>
     
 </div>
@@ -174,16 +174,30 @@
     </div>
     
     <div class="post-body post-content">
-        <p>实现效果： 页面内容加载完之前，先添加一个动画效果，告诉用户页面内容正在加载，等内容加载完之后，隐藏动画，正常显示页面内容。 可以用css3, html生成动画效果，这里直接引入一个gif动画。</p>
-<a id="more"></a>
-<p>html:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class=&quot;preloader&quot; id=&quot;preloader&quot;&gt;</span><br><span class="line">        &lt;img src=&quot;img/preloader.gif&quot; alt=&quot;preloader&quot;&gt;</span><br><span class="line">    &lt;/div&gt;</span><br></pre></td></tr></table></figure></p>
-<pre><code>css:
-</code></pre><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.preloader</span> &#123;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0%</span>;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">1</span>;</span><br><span class="line">    <span class="attribute">background-color</span>: <span class="number">#fbfbfb</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.preloader</span> <span class="selector-tag">img</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: block;</span><br><span class="line">    <span class="attribute">margin</span>: <span class="number">0</span> auto;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">20%</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<pre><code>jquery:
-</code></pre><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> $(<span class="built_in">window</span>).on(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line"> $(<span class="string">'#preloader'</span>).remove();</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>注意这里没用直接使用<code>$(document).ready(function(){})</code>或者<code>$(function(){})</code>, 是因为前两者指的是浏览器把网页解析为dom树之后就执行，而<code>$(window).on(&#39;load&#39;,function(){})</code>, 而是网页内容全部加载完成后才执行，包括图片等。后者的加载的事件要长些</p>
+        <blockquote>
+<p>Javascript中的数据类型有哪些？</p>
 </blockquote>
+<p>数据类型包括基础数据类型(值类型)或者引用数据类型。<br>基础数据类型：undefined, null, number, boolean, string, Symbol(es6);<br>复杂数据类型：对象等。包括：内部对象（Array、Function等），宿主对象（window）和自定义对象。</p>
+<blockquote>
+<p>typeof返回值</p>
+</blockquote>
+<p>“number”,“string”,“boolean”,“object”,”symbol”,“function”,“undefined”。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">alert(typeof null);  // object</span><br><span class="line">alert(typeof undefined);  // undefined</span><br><span class="line">alert(typeof NaN);  // number</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>null和undefined比较</p>
+</blockquote>
+<p>不同：<br>1，进行数字类型转换时，null返回0，undefined返回NaN<br>2，undefined实际上代表了不存在的值（non-existence of a value）。而null通常用作一个空引用一个空对象的预期,就像一个占位符<br>3，typeof null返回的是object，这是一个一直未修复的bug。</p>
+<blockquote>
+<p>如何判断一个变量是数组</p>
+</blockquote>
+<p>判断数据类型最先想到的是typeof, 但是typeof只能用来判断基本数据类型。引用类型的返回都是object,(函数返回function);</p>
+<p>objA instanceof Object,  objA作为a的实例，有<strong>proto</strong>隐式原型，Object有显式原型prototype,而<strong>proto</strong>和prototype都指向同一个原型。<br>如果objA的隐式原型和Object的显式原型指向同一个，则返回ture;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ary = [<span class="number">1</span>,<span class="number">23</span>,<span class="number">4</span>];</span><br><span class="line"><span class="built_in">console</span>.log(ary <span class="keyword">instanceof</span> <span class="built_in">Array</span>)<span class="comment">//t</span></span><br></pre></td></tr></table></figure>
+<p>这种情况下的确可以检测出属于数组。但是js中Object是所有的基础，所以：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>];</span><br><span class="line"><span class="built_in">console</span>.log(arr <span class="keyword">instanceof</span> <span class="built_in">Object</span>); <span class="comment">//true</span></span><br><span class="line"><span class="built_in">console</span>.log(arr <span class="keyword">instanceof</span> <span class="built_in">Array</span>);  <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>所以这种情况就无法判断了。</p>
+<p>可以直接使用Array.isArray()方法来判断。<br>也可以通过Object.prototype.toString.call(arr)来的判断。</p>
+<p>To be continued</p>
 
     </div>
 
@@ -201,15 +215,10 @@
 
 <div class="article-nav prev-next-wrap clearfix">
     
-        <a href="/chrome-devtool-1.html" class="pre-post btn btn-default" title='chrome devtool技巧总结'>
-            <i class="fa fa-angle-left fa-fw"></i><span class="hidden-lg">上一篇</span>
-            <span class="hidden-xs">chrome devtool技巧总结</span>
-        </a>
     
-    
-        <a href="/scroll-nav.html" class="next-post btn btn-default" title='jQuery实现滚动导航栏'>
+        <a href="/js-interview-scope.html" class="next-post btn btn-default" title='作用域考察点总结'>
             <span class="hidden-lg">下一篇</span>
-            <span class="hidden-xs">jQuery实现滚动导航栏</span><i class="fa fa-angle-right fa-fw"></i>
+            <span class="hidden-xs">作用域考察点总结</span><i class="fa fa-angle-right fa-fw"></i>
         </a>
     
 </div>
